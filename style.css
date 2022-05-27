@@ -1,3 +1,7 @@
+body {
+    margin: 0;
+}
+
 .section-game {
     background-color: lightblue;
     width: 100%;
@@ -5,18 +9,23 @@
 }
 
 .game-start {
-    position: fixed;
+    position: absolute;
     width: 30%;
     background-color: lightgreen;
     border-radius: 30px;
-    top: 50%;
-    left: 35%;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%);
     text-align: center;
     padding: 50px;
     font-size: 50px;
     font-family: Consolas;
     cursor: pointer;
-    
+
+}
+
+.game-start:hover {
+    background-color: greenyellow;
 }
 
 .hidden {
@@ -25,4 +34,6 @@
 
 .game-area {
     background-color: lightskyblue;
+    width: 100%;
+    height: 100vh;
 }

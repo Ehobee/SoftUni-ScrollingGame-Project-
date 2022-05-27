@@ -1,7 +1,8 @@
 const playButton = document.querySelector('.game-start');
-const gameScreen = document.querySelector('game-area');
+const gameScreen = document.querySelector('.game-area');
 
-playButton.addEventListener('click', ()=> {
-playButton.classList.add('hidden');
-gameScreen.style.display = 'block';
+
+playButton.addEventListener('click', () => {
+    playButton.classList.add('hidden');
+    gameScreen.classList.remove('hidden');
 })
