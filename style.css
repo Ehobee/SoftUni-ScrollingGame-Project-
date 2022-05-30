@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    font-family: Consolas;
 }
 
 .section-game {
@@ -19,7 +20,6 @@ body {
     text-align: center;
     padding: 50px;
     font-size: 50px;
-    font-family: Consolas;
     cursor: pointer;
 
 }

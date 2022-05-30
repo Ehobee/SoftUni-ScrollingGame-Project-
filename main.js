@@ -1,8 +1,7 @@
-const playButton = document.querySelector('.game-start');
-const gameScreen = document.querySelector('.game-area');
+let state = initState();
+let game = initGameObjects();
 
-
-playButton.addEventListener('click', () => {
-    playButton.classList.add('hidden');
-    gameScreen.classList.remove('hidden');
-})
+game.playButton.addEventListener('click', () => {
+    game.playButton.classList.add('hidden');
+    game.gameScreen.classList.remove('hidden');
+});
