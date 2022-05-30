@@ -1,9 +1,11 @@
 function start(state, game) {
 
-    window.requestAnimationFrame(gameLoop.bind(null, game, state));
+    game.createSplatoon(state.splatoon);
+
+    window.requestAnimationFrame(gameLoop.bind(null, state, game));
 };
 
 function gameLoop() {
     console.log('start')
-    window.requestAnimationFrame(gameLoop.bind(null, game, state));
+    window.requestAnimationFrame(gameLoop.bind(null, state, game));
 };
