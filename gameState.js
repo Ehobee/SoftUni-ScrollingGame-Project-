@@ -4,8 +4,8 @@ function initState() {
         splatoon: {
             width: 130,
             height: 153,
-            startX: 200,
-            startY:200
+            startX: Math.floor(Math.random() * 1000),
+            startY:Math.floor(Math.random() * 500)
         }
     };
 
