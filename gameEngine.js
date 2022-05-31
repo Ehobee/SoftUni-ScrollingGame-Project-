@@ -6,6 +6,6 @@ function start(state, game) {
 };
 
 function gameLoop() {
-    console.log('start')
+    console.log(state.keys)
     window.requestAnimationFrame(gameLoop.bind(null, state, game));
 };
