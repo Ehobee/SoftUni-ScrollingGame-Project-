@@ -2,7 +2,7 @@ function start(state, game) {
 
     game.createSplatoon(state.splatoon);
 
-    window.requestAnimationFrame(gameLoop.bind(null, state, game));
+    window.requestAnimationFrame(gameLoop.bind(state, game));
 };
 
 function gameLoop() {
