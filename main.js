@@ -1,7 +1,7 @@
 let state = initState();
 let game = initGameObjects();
 
-const availableKeys = ['KeyA', 'KeyS', 'KeyW', 'KeyD'];
+const availableKeys = ['KeyA', 'KeyS', 'KeyW', 'KeyD', 'Space'];
 
 game.playButton.addEventListener('click', () => {
     game.playButton.classList.add('hidden');
@@ -16,8 +16,6 @@ game.playButton.addEventListener('click', () => {
         if (availableKeys.includes(e.code)) {
             state.keys[e.code] = true;
         }
-
-
     });
 
     document.addEventListener('keyup', (e) => {

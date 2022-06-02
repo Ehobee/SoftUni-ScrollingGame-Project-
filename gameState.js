@@ -8,7 +8,8 @@ function initState() {
             width: 130,
             height: 153,
             positionX: startX,
-            positionY: startY
+            positionY: startY,
+            speed: 10
         },
         keys: {}
     };
