@@ -11,6 +11,10 @@ function initState() {
             positionY: startY,
             speed: 10
         },
+        squidStats: {
+            width: 100,
+            height: 100,
+        },
         keys: {}
     };
 
