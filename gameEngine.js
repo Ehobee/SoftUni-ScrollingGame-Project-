@@ -23,7 +23,12 @@ function gameLoop(state, game, timestamp) {
     //Move squids
     document.querySelectorAll('.squid').forEach(squid => {
         let positionX = parseInt(squid.style.left);
-        squid.style.left = positionX - state.squidStats.speed +'px';
+        
+        if (positionX > 0) {
+            squid.style.left = positionX - state.squidStats.speed + 'px';
+        } else {
+            squid.remove();
+        }
     });
 
     window.requestAnimationFrame(gameLoop.bind(null, state, game));
