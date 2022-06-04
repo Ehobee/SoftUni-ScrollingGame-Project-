@@ -1,7 +1,5 @@
 function start(state, game) {
-
     game.createSplatoon(state.splatoon);
-
     window.requestAnimationFrame(gameLoop.bind(null, state, game));
 };
 
@@ -20,8 +18,7 @@ function gameLoop(state, game, timestamp) {
         state.squidStats.nextSpawnTimestamp = timestamp + Math.random() * state.squidStats.maxSpawnInterval
     };
 
-
-    if(state.keys.Space) {
+    if (state.keys.Space) {
         game.createShot(splatoon, state.shotStats);
     };
 
@@ -33,6 +30,17 @@ function gameLoop(state, game, timestamp) {
             squid.style.left = positionX - state.squidStats.speed + 'px';
         } else {
             squid.remove();
+        }
+    });
+
+    //Move shots
+    document.querySelectorAll('.shot').forEach(shot => {
+        let positionX = parseInt(shot.style.left);
+
+        if (positionX > game.gameScreen.offsetWidth) {
+            shot.remove();
+        } else {
+            shot.style.left = positionX + state.shotStats.speed + 'px';
         }
     });
 

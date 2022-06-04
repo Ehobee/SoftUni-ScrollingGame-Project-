@@ -13,7 +13,8 @@ function initState() {
         },
         shotStats: {
             width: 25,
-            height: 25
+            height: 25,
+            speed: 10
         },
         squidStats: {
             width: 60,
