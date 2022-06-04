@@ -20,10 +20,15 @@ function gameLoop(state, game, timestamp) {
         state.squidStats.nextSpawnTimestamp = timestamp + Math.random() * state.squidStats.maxSpawnInterval
     };
 
+
+    if(state.keys.Space) {
+        game.createShot(splatoon, state.shotStats);
+    };
+
     //Move squids
     document.querySelectorAll('.squid').forEach(squid => {
         let positionX = parseInt(squid.style.left);
-        
+
         if (positionX > 0) {
             squid.style.left = positionX - state.squidStats.speed + 'px';
         } else {

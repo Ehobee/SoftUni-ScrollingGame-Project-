@@ -1,7 +1,7 @@
 function initGameObjects() {
     const playButton = document.querySelector('.game-start');
     const gameScreen = document.querySelector('.game-area');
-//return the game Dom
+    //return the game Dom
     return {
         playButton,
         gameScreen,
@@ -14,6 +14,15 @@ function initGameObjects() {
             splatoonElement.style.top = initialState.startY + 'px';
             this.splatoonElement = splatoonElement;
             gameScreen.appendChild(splatoonElement);
+        },
+        createShot(splatoon, shotStats) {
+            const shotElement = document.createElement('div');
+            shotElement.classList.add('shot');
+            shotElement.style.left = splatoon.positionX + splatoon.width + 'px';
+            shotElement.style.top = splatoon.positionY + + splatoon.height / 6.5 + 'px';
+            shotElement.style.width = shotStats.width + 'px';
+            shotElement.style.height = shotStats.height + 'px';
+            gameScreen.appendChild(shotElement);
         },
         createSquid(stats) {
             const squidElement = document.createElement('div');

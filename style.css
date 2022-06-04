@@ -44,6 +44,12 @@ body {
     position:absolute;
 }
 
+.shot {
+    background-image: url(images/green-blast-fococlipping-standard.png);
+    background-size: contain;
+    position:absolute;
+}
+
 .squid {
 background-image: url(images/pink-squid-fococlipping-standard.png);
 background-size: contain;
