@@ -18,7 +18,13 @@ function gameLoop(state, game, timestamp) {
     if (timestamp > state.squidStats.nextSpawnTimestamp) {
         game.createSquid(state.squidStats);
         state.squidStats.nextSpawnTimestamp = timestamp + Math.random() * state.squidStats.maxSpawnInterval
-    }
+    };
+
+    //Move squids
+    document.querySelectorAll('.squid').forEach(squid => {
+        let positionX = parseInt(squid.style.left);
+        squid.style.left = positionX - state.squidStats.speed +'px';
+    });
 
     window.requestAnimationFrame(gameLoop.bind(null, state, game));
 };

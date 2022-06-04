@@ -1,7 +1,7 @@
 function initGameObjects() {
     const playButton = document.querySelector('.game-start');
     const gameScreen = document.querySelector('.game-area');
-//return the game Dom element objects
+//return the game Dom
     return {
         playButton,
         gameScreen,
