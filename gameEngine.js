@@ -2,10 +2,10 @@ function start(state, game) {
 
     game.createSplatoon(state.splatoon);
 
-    window.requestAnimationFrame(gameLoop.bind(state, game));
+    window.requestAnimationFrame(gameLoop.bind(null, state, game));
 };
 
-function gameLoop() {
+function gameLoop(state, game, timestamp) {
     const { splatoon } = state;
     const { splatoonElement } = game;
 
@@ -15,9 +15,12 @@ function gameLoop() {
     splatoonElement.style.top = splatoon.positionY + 'px';
 
     //Spawn squids
-    game.createSquid(state.squidStats);
+    if (timestamp > state.squidStats.nextSpawnTimestamp) {
+        game.createSquid(state.squidStats);
+        state.squidStats.nextSpawnTimestamp = timestamp + Math.random() * state.squidStats.maxSpawnInterval
+    }
 
-    window.requestAnimationFrame(gameLoop.bind(state, game));
+    window.requestAnimationFrame(gameLoop.bind(null, state, game));
 };
 
 function mainCharacterMovement(state, game) {

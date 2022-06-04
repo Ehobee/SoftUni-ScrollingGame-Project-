@@ -1,7 +1,7 @@
 function initState() {
     let startX = Math.floor(Math.random() * 1000);
     let startY = Math.floor(Math.random() * 500);
-
+//return the Dynamic object of the game elements/objects
     const state = {
         player: "Ehobee",
         splatoon: {
@@ -12,10 +12,19 @@ function initState() {
             speed: 10
         },
         squidStats: {
-            width: 100,
-            height: 100,
+            width: 60,
+            height: 60,
+            nextSpawnTimestamp: 0,
+            maxSpawnInterval: 1500,
+            speed: 8
         },
-        keys: {}
+        keys: {
+            KeyA: false,
+            KeyW:false,
+            KeyS: false,
+            KeyD: false,
+            Space: false
+        }
     };
 
     return state;
