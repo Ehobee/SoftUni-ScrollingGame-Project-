@@ -8,7 +8,7 @@ function gameLoop(state, game, timestamp) {
     const { splatoonElement } = game;
 
     mainCharacterMovement(state, game);
-    //Rendersplatoon
+    //Render splatoon
     splatoonElement.style.left = splatoon.positionX + 'px';
     splatoonElement.style.top = splatoon.positionY + 'px';
 
@@ -23,7 +23,8 @@ function gameLoop(state, game, timestamp) {
     };
 
     //Move squids
-    document.querySelectorAll('.squid').forEach(squid => {
+    let squids = document.querySelectorAll('.squid');
+    squids.forEach(squid => {
         let positionX = parseInt(squid.style.left);
 
         if (positionX > 0) {
@@ -36,6 +37,14 @@ function gameLoop(state, game, timestamp) {
     //Move shots
     document.querySelectorAll('.shot').forEach(shot => {
         let positionX = parseInt(shot.style.left);
+
+        //Detect collision between squids and shots
+        squids.forEach(squid => {
+            if (detectCollision(squid, shot)) {
+                squid.remove();
+                shot.remove();
+            }
+        });
 
         if (positionX > game.gameScreen.offsetWidth) {
             shot.remove();
@@ -64,4 +73,12 @@ function mainCharacterMovement(state, game) {
         splatoon.positionY += splatoon.speed;
     };
 
+};
+
+function detectCollision(objectA, objectB) {
+    let firstObj = objectA.getBoundingClientRect();
+    let secondObj = objectB.getBoundingClientRect();
+
+    let hasCollision = !(firstObj.top > secondObj.bottom || firstObj.bottom < secondObj.top || firstObj.right < secondObj.left || firstObj.left > secondObj.right);
+    return hasCollision;
 }
