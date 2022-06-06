@@ -14,7 +14,9 @@ function initState() {
         shotStats: {
             width: 25,
             height: 25,
-            speed: 10
+            speed: 10,
+            nextShotTimestamp: 0,
+            maxShotInterval: 300, 
         },
         squidStats: {
             width: 60,

@@ -12,6 +12,8 @@ function gameLoop(state, game, timestamp) {
     splatoonElement.style.left = splatoon.positionX + 'px';
     splatoonElement.style.top = splatoon.positionY + 'px';
 
+
+
     //Spawn squids
     if (timestamp > state.squidStats.nextSpawnTimestamp) {
         game.createSquid(state.squidStats);
@@ -19,8 +21,15 @@ function gameLoop(state, game, timestamp) {
     };
 
     if (state.keys.Space) {
-        game.createShot(splatoon, state.shotStats);
+
+        //Delay shots - bug fixed
+        if (timestamp > state.shotStats.nextShotTimestamp) {
+            game.createShot(splatoon, state.shotStats);
+            state.shotStats.nextShotTimestamp = timestamp + state.shotStats.maxShotInterval;
+        }
     };
+
+
 
     //Move squids
     let squids = document.querySelectorAll('.squid');
