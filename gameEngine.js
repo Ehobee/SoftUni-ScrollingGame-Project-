@@ -6,6 +6,8 @@ function start(state, game) {
 function gameLoop(state, game, timestamp) {
     const { splatoon } = state;
     const { splatoonElement } = game;
+    const { playButton } = game;
+    const gameOverScreen = document.querySelector('.game-over');
 
     mainCharacterMovement(state, game);
     //Render splatoon
@@ -26,7 +28,7 @@ function gameLoop(state, game, timestamp) {
         if (timestamp > state.shotStats.nextShotTimestamp) {
             game.createShot(splatoon, state.shotStats);
             state.shotStats.nextShotTimestamp = timestamp + state.shotStats.maxShotInterval;
-        }
+        };
     };
 
 
@@ -35,6 +37,12 @@ function gameLoop(state, game, timestamp) {
     let squids = document.querySelectorAll('.squid');
     squids.forEach(squid => {
         let positionX = parseInt(squid.style.left);
+
+
+        //Detect collision with character
+        if (detectCollision(splatoonElement, squid)) {
+            state.gameOver = true;
+        };
 
         if (positionX > 0) {
             squid.style.left = positionX - state.squidStats.speed + 'px';
@@ -62,7 +70,16 @@ function gameLoop(state, game, timestamp) {
         }
     });
 
-    window.requestAnimationFrame(gameLoop.bind(null, state, game));
+    if (state.gameOver) {
+        splatoonElement.remove();
+        gameOverScreen.classList.remove('hidden');
+        // Resets the game - google
+        gameOverScreen.addEventListener('click', () => {
+            window.location.reload();
+        });
+    } else {
+        window.requestAnimationFrame(gameLoop.bind(null, state, game));
+    };
 };
 
 function mainCharacterMovement(state, game) {
@@ -90,4 +107,4 @@ function detectCollision(objectA, objectB) {
 
     let hasCollision = !(firstObj.top > secondObj.bottom || firstObj.bottom < secondObj.top || firstObj.right < secondObj.left || firstObj.left > secondObj.right);
     return hasCollision;
-}
+};

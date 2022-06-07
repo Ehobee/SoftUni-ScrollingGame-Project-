@@ -4,6 +4,8 @@ function initState() {
     //return the Dynamic object of the game elements/objects
     const state = {
         player: "Ehobee",
+        gameOver: false,
+        highScore: 0,
         splatoon: {
             width: 130,
             height: 153,

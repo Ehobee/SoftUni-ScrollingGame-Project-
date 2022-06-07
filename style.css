@@ -56,3 +56,21 @@ background-image: url(images/pink-squid-fococlipping-standard.png);
 background-size: contain;
 position: absolute;
 }
+
+.game-over {
+    position: absolute;
+    width: 30%;
+    background-color: rgb(233, 69, 69);
+    border-radius: 30px;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%);
+    text-align: center;
+    padding: 50px;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+.game-over:hover {
+    background-color: red;
+}
