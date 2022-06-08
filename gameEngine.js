@@ -6,8 +6,8 @@ function start(state, game) {
 function gameLoop(state, game, timestamp) {
     const { splatoon } = state;
     const { splatoonElement } = game;
-    const { playButton } = game;
     const gameOverScreen = document.querySelector('.game-over');
+    const shotSound = new Audio('sf_laser_14.mp3');
 
     mainCharacterMovement(state, game);
     //Render splatoon
@@ -27,6 +27,7 @@ function gameLoop(state, game, timestamp) {
         //Delay shots - bug fixed
         if (timestamp > state.shotStats.nextShotTimestamp) {
             game.createShot(splatoon, state.shotStats);
+            shotSound.play();
             state.shotStats.nextShotTimestamp = timestamp + state.shotStats.maxShotInterval;
         };
     };
