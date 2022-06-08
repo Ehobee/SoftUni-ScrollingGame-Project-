@@ -10,6 +10,8 @@ function gameLoop(state, game, timestamp) {
     const shotSound = new Audio('sf_laser_14.mp3');
     const gameOverSound = new Audio('buzzer2.mp3');
 
+    document.querySelector('.game-score').textContent = state.highScore + ' pts.';
+
     mainCharacterMovement(state, game);
     //Render splatoon
     splatoonElement.style.left = splatoon.positionX + 'px';
@@ -62,6 +64,7 @@ function gameLoop(state, game, timestamp) {
             if (detectCollision(squid, shot)) {
                 squid.remove();
                 shot.remove();
+                state.highScore += 2;
             }
         });
 

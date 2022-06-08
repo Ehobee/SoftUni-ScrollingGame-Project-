@@ -74,3 +74,11 @@ position: absolute;
 .game-over:hover {
     background-color: red;
 }
+
+.game-score {
+    color: white;
+    position: absolute;
+    top: 20px;
+    left: 60px;
+    font-size: 30px;
+}
