@@ -1,6 +1,9 @@
+const mainSound = new Audio('08 - GO WEST! BGM.mp3');
+
 function start(state, game) {
     game.createSplatoon(state.splatoon);
     window.requestAnimationFrame(gameLoop.bind(null, state, game));
+    mainSound.play();
 };
 
 function gameLoop(state, game, timestamp) {
@@ -79,6 +82,7 @@ function gameLoop(state, game, timestamp) {
         splatoonElement.remove();
         gameOverScreen.classList.remove('hidden');
         gameOverSound.play();
+        mainSound.pause();
         // Resets the game - google
         gameOverScreen.addEventListener('click', () => {
             window.location.reload();
