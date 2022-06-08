@@ -8,6 +8,7 @@ function gameLoop(state, game, timestamp) {
     const { splatoonElement } = game;
     const gameOverScreen = document.querySelector('.game-over');
     const shotSound = new Audio('sf_laser_14.mp3');
+    const gameOverSound = new Audio('buzzer2.mp3');
 
     mainCharacterMovement(state, game);
     //Render splatoon
@@ -74,6 +75,7 @@ function gameLoop(state, game, timestamp) {
     if (state.gameOver) {
         splatoonElement.remove();
         gameOverScreen.classList.remove('hidden');
+        gameOverSound.play();
         // Resets the game - google
         gameOverScreen.addEventListener('click', () => {
             window.location.reload();
