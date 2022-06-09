@@ -51,6 +51,12 @@ body {
     position:absolute;
 }
 
+.hearts {
+    background-image: url(images/heart-removebg-preview.png);
+    background-size: contain;
+    position: absolute;
+}
+
 .squid {
 background-image: url(images/pink-squid-fococlipping-standard.png);
 background-size: contain;

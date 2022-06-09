@@ -19,10 +19,19 @@ function initGameObjects() {
             const shotElement = document.createElement('div');
             shotElement.classList.add('shot');
             shotElement.style.left = splatoon.positionX + splatoon.width + 'px';
-            shotElement.style.top = splatoon.positionY + + splatoon.height / 6.5 + 'px';
+            shotElement.style.top = splatoon.positionY + splatoon.height / 6.5 + 'px';
             shotElement.style.width = shotStats.width + 'px';
             shotElement.style.height = shotStats.height + 'px';
             gameScreen.appendChild(shotElement);
+        },
+        createLives(lives) {
+            const heartElements = document.createElement('div');
+            heartElements.classList.add('hearts');
+            gameScreen.appendChild(heartElements);
+            heartElements.style.left = game.gameScreen.offsetWidth - (lives.width * 2) + 'px';
+            heartElements.style.top = lives.height + 'px';
+            heartElements.style.width = lives.width + 'px';
+            heartElements.style.height = lives.height + 'px';
         },
         createSquid(stats) {
             const squidElement = document.createElement('div');

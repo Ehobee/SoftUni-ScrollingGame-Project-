@@ -3,7 +3,7 @@ const mainSound = new Audio('08 - GO WEST! BGM.mp3');
 function start(state, game) {
     game.createSplatoon(state.splatoon);
     window.requestAnimationFrame(gameLoop.bind(null, state, game));
-    
+    game.createLives(state.lives);
     mainSound.play();
 
   
@@ -18,6 +18,9 @@ function gameLoop(state, game, timestamp) {
     const gameOverSound = new Audio('buzzer2.mp3');
 
     document.querySelector('.game-score').textContent = state.highScore + ' pts.';
+
+
+    
 
     mainCharacterMovement(state, game);
     //Render splatoon

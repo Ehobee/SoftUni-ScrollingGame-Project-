@@ -20,6 +20,10 @@ function initState() {
             nextShotTimestamp: 0,
             maxShotInterval: 300, 
         },
+        lives: {
+            width: 30,
+            height: 30,
+        },
         squidStats: {
             width: 60,
             height: 60,
