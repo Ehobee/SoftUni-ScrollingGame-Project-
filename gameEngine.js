@@ -3,7 +3,11 @@ const mainSound = new Audio('08 - GO WEST! BGM.mp3');
 function start(state, game) {
     game.createSplatoon(state.splatoon);
     window.requestAnimationFrame(gameLoop.bind(null, state, game));
+    
     mainSound.play();
+
+  
+    
 };
 
 function gameLoop(state, game, timestamp) {
@@ -20,7 +24,9 @@ function gameLoop(state, game, timestamp) {
     splatoonElement.style.left = splatoon.positionX + 'px';
     splatoonElement.style.top = splatoon.positionY + 'px';
 
-
+    if(mainSound.ended) {
+        mainSound.play();
+    };
 
     //Spawn squids
     if (timestamp > state.squidStats.nextSpawnTimestamp) {
