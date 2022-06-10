@@ -31,6 +31,13 @@ function initState() {
             maxSpawnInterval: 1500,
             speed: 5
         },
+        squidStatsLvl2: {
+            width: 80,
+            height: 80,
+            nextSpawnTimestamp: 0,
+            maxSpawnInterval: 1300,
+            speed: 7
+        },
         keys: {
             KeyA: false,
             KeyW: false,

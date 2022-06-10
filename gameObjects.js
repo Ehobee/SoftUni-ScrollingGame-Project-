@@ -41,6 +41,15 @@ function initGameObjects() {
             squidElement.style.left = game.gameScreen.offsetWidth - stats.width + 'px';
             squidElement.style.top = Math.random() * (game.gameScreen.offsetHeight - stats.height) + 'px';
             gameScreen.appendChild(squidElement);
+        },
+        createSquidLvl2(stats) {
+            const squidElement = document.createElement('div');
+            squidElement.classList.add('squidLvl2');
+            squidElement.style.width = stats.width + 'px';
+            squidElement.style.height = stats.height + 'px';
+            squidElement.style.left = game.gameScreen.offsetWidth - stats.width + 'px';
+            squidElement.style.top = Math.random() * (game.gameScreen.offsetHeight - stats.height) + 'px';
+            gameScreen.appendChild(squidElement);
         }
     };
 }

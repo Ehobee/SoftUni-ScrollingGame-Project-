@@ -63,6 +63,12 @@ background-size: contain;
 position: absolute;
 }
 
+.squidLvl2 {
+    background-image: url(images/R.png);
+background-size: contain;
+position: absolute;
+}
+
 .game-over {
     position: absolute;
     width: 30%;
