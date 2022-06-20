@@ -31,10 +31,10 @@ function gameLoop(state, game, timestamp) {
     } else if (state.highScore >= 300 && state.highScore < 700 && timestamp > state.squidStatsLvl2.nextSpawnTimestamp) {
         game.createSquidLvl2(state.squidStatsLvl2);
         state.squidStatsLvl2.nextSpawnTimestamp = timestamp + Math.random() * state.squidStatsLvl2.maxSpawnInterval;
-    } else if (state.highScore >= 700 && state.highScore < 1000 && timestamp > state.squidStatsLvl2.nextSpawnTimestamp) {
+    } else if (state.highScore >= 700 && state.highScore < 1300 && timestamp > state.squidStatsLvl2.nextSpawnTimestamp) {
         game.createSquidLvl3(state.squidStatsLvl3);
         state.squidStatsLvl3.nextSpawnTimestamp = timestamp + Math.random() * state.squidStatsLvl3.maxSpawnInterval;
-    } else if (state.highScore >= 1000 && timestamp > state.squidStatsLvl3.nextSpawnTimestamp) {
+    } else if (state.highScore >= 1300 && timestamp > state.squidStatsLvl3.nextSpawnTimestamp) {
         game.createSquidLvl4(state.squidStatsLvl4);
         state.squidStatsLvl4.nextSpawnTimestamp = timestamp + Math.random() * state.squidStatsLvl4.maxSpawnInterval;;
     };
