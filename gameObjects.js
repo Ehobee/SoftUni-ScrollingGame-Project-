@@ -24,15 +24,6 @@ function initGameObjects() {
             shotElement.style.height = shotStats.height + 'px';
             gameScreen.appendChild(shotElement);
         },
-        createLives(lives) {
-            const heartElements = document.createElement('div');
-            heartElements.classList.add('hearts');
-            gameScreen.appendChild(heartElements);
-            heartElements.style.left = game.gameScreen.offsetWidth - (lives.width * 2) + 'px';
-            heartElements.style.top = lives.height + 'px';
-            heartElements.style.width = lives.width + 'px';
-            heartElements.style.height = lives.height + 'px';
-        },
         createSquid(stats) {
             const squidElement = document.createElement('div');
             squidElement.classList.add('squid');
@@ -45,6 +36,24 @@ function initGameObjects() {
         createSquidLvl2(stats) {
             const squidElement = document.createElement('div');
             squidElement.classList.add('squidLvl2');
+            squidElement.style.width = stats.width + 'px';
+            squidElement.style.height = stats.height + 'px';
+            squidElement.style.left = game.gameScreen.offsetWidth - stats.width + 'px';
+            squidElement.style.top = Math.random() * (game.gameScreen.offsetHeight - stats.height) + 'px';
+            gameScreen.appendChild(squidElement);
+        },
+        createSquidLvl3(stats) {
+            const squidElement = document.createElement('div');
+            squidElement.classList.add('squidLvl3');
+            squidElement.style.width = stats.width + 'px';
+            squidElement.style.height = stats.height + 'px';
+            squidElement.style.left = game.gameScreen.offsetWidth - stats.width + 'px';
+            squidElement.style.top = Math.random() * (game.gameScreen.offsetHeight - stats.height) + 'px';
+            gameScreen.appendChild(squidElement);
+        },
+        createSquidLvl4(stats) {
+            const squidElement = document.createElement('div');
+            squidElement.classList.add('squidLvl4');
             squidElement.style.width = stats.width + 'px';
             squidElement.style.height = stats.height + 'px';
             squidElement.style.left = game.gameScreen.offsetWidth - stats.width + 'px';

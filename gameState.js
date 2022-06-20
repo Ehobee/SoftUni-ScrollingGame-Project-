@@ -20,10 +20,6 @@ function initState() {
             nextShotTimestamp: 0,
             maxShotInterval: 300, 
         },
-        lives: {
-            width: 30,
-            height: 30,
-        },
         squidStats: {
             width: 60,
             height: 60,
@@ -32,11 +28,25 @@ function initState() {
             speed: 5
         },
         squidStatsLvl2: {
-            width: 80,
-            height: 80,
+            width: 95,
+            height: 61,
             nextSpawnTimestamp: 0,
             maxSpawnInterval: 1300,
             speed: 7
+        },
+        squidStatsLvl3: {
+            width: 95,
+            height: 79,
+            nextSpawnTimestamp: 0,
+            maxSpawnInterval: 1100,
+            speed: 8
+        },
+        squidStatsLvl4: {
+            width: 97,
+            height: 81,
+            nextSpawnTimestamp: 0,
+            maxSpawnInterval: 900,
+            speed: 9
         },
         keys: {
             KeyA: false,

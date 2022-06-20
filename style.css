@@ -64,7 +64,19 @@ position: absolute;
 }
 
 .squidLvl2 {
-    background-image: url(images/R.png);
+    background-image: url(images/orange-squid.png);
+background-size: contain;
+position: absolute;
+}
+
+.squidLvl3 {
+    background-image: url(images/blue-squid-fococlipping-standard.png);
+background-size: contain;
+position: absolute;
+}
+
+.squidLvl4 {
+    background-image: url(images/green-squid-fococlipping-standard.png);
 background-size: contain;
 position: absolute;
 }

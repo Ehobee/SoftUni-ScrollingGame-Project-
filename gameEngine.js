@@ -3,11 +3,7 @@ const mainSound = new Audio('08 - GO WEST! BGM.mp3');
 function start(state, game) {
     game.createSplatoon(state.splatoon);
     window.requestAnimationFrame(gameLoop.bind(null, state, game));
-    game.createLives(state.lives);
     mainSound.play();
-
-
-
 };
 
 function gameLoop(state, game, timestamp) {
@@ -18,9 +14,6 @@ function gameLoop(state, game, timestamp) {
     const gameOverSound = new Audio('buzzer2.mp3');
 
     document.querySelector('.game-score').textContent = state.highScore + ' pts.';
-
-
-
 
     mainCharacterMovement(state, game);
     //Render splatoon
@@ -35,21 +28,18 @@ function gameLoop(state, game, timestamp) {
     if (timestamp > state.squidStats.nextSpawnTimestamp && state.highScore < 300) {
         game.createSquid(state.squidStats);
         state.squidStats.nextSpawnTimestamp = timestamp + Math.random() * state.squidStats.maxSpawnInterval;
+    } else if (state.highScore >= 300 && state.highScore < 700 && timestamp > state.squidStatsLvl2.nextSpawnTimestamp) {
+        game.createSquidLvl2(state.squidStatsLvl2);
+        state.squidStatsLvl2.nextSpawnTimestamp = timestamp + Math.random() * state.squidStatsLvl2.maxSpawnInterval;
+    } else if (state.highScore >= 700 && state.highScore < 1000 && timestamp > state.squidStatsLvl2.nextSpawnTimestamp) {
+        game.createSquidLvl3(state.squidStatsLvl3);
+        state.squidStatsLvl3.nextSpawnTimestamp = timestamp + Math.random() * state.squidStatsLvl3.maxSpawnInterval;
+    } else if (state.highScore >= 1000 && timestamp > state.squidStatsLvl3.nextSpawnTimestamp) {
+        game.createSquidLvl4(state.squidStatsLvl4);
+        state.squidStatsLvl4.nextSpawnTimestamp = timestamp + Math.random() * state.squidStatsLvl4.maxSpawnInterval;;
     };
 
     if (state.keys.Space) {
-
-
-        //Spawn Lvl2 Squids
-
-        if (state.highScore >= 300) {
-
-            if (timestamp > state.squidStatsLvl2.nextSpawnTimestamp) {
-                game.createSquidLvl2(state.squidStatsLvl2);
-                state.squidStatsLvl2.nextSpawnTimestamp = timestamp + Math.random() * state.squidStatsLvl2.maxSpawnInterval;
-            };
-        };
-
 
         //Delay shots - bug fixed
         if (timestamp > state.shotStats.nextShotTimestamp) {
@@ -59,13 +49,40 @@ function gameLoop(state, game, timestamp) {
         };
     };
 
-    //Move Lvl2 Squids
+    let squidsLvl4 = document.querySelectorAll('.squidLvl4');
+    squidsLvl4.forEach(squid => {
+        let positionX = parseInt(squid.style.left);
+        //Detect collision with character
+        if (detectCollision(splatoonElement, squid)) {
+            state.gameOver = true;
+        };
 
+        if (positionX > 0) {
+            squid.style.left = positionX - state.squidStatsLvl4.speed + 'px';
+        } else {
+            squid.remove();
+        }
+    });
+
+    let squidsLvl3 = document.querySelectorAll('.squidLvl3');
+    squidsLvl3.forEach(squid => {
+        let positionX = parseInt(squid.style.left);
+        //Detect collision with character
+        if (detectCollision(splatoonElement, squid)) {
+            state.gameOver = true;
+        };
+
+        if (positionX > 0) {
+            squid.style.left = positionX - state.squidStatsLvl3.speed + 'px';
+        } else {
+            squid.remove();
+        }
+    });
+
+    //Move Lvl2 Squids
     let squidsLvl2 = document.querySelectorAll('.squidLvl2');
     squidsLvl2.forEach(squid => {
         let positionX = parseInt(squid.style.left);
-
-
         //Detect collision with character
         if (detectCollision(splatoonElement, squid)) {
             state.gameOver = true;
@@ -82,7 +99,6 @@ function gameLoop(state, game, timestamp) {
     let squids = document.querySelectorAll('.squid');
     squids.forEach(squid => {
         let positionX = parseInt(squid.style.left);
-
 
         //Detect collision with character
         if (detectCollision(splatoonElement, squid)) {
@@ -114,6 +130,22 @@ function gameLoop(state, game, timestamp) {
                 squid.remove();
                 shot.remove();
                 state.highScore += 4;
+            }
+        });
+
+        squidsLvl3.forEach(squid => {
+            if (detectCollision(squid, shot)) {
+                squid.remove();
+                shot.remove();
+                state.highScore += 6;
+            }
+        });
+
+        squidsLvl4.forEach(squid => {
+            if (detectCollision(squid, shot)) {
+                squid.remove();
+                shot.remove();
+                state.highScore += 7;
             }
         });
 
